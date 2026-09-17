@@ -1,0 +1,10 @@
+{
+  "name": "bilibili-year-filter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Client-side Bilibili video publication-year filter.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node test/syntax-check.js"
+  }
+}

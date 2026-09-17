@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B站年份过滤器</title>
+    <style>
+      :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      body { background: #f8fafc; color: #1f2937; margin: 0; min-width: 300px; padding: 16px; }
+      h1 { color: #16213a; font-size: 17px; margin: 0; }
+      p { color: #7b879b; font-size: 11px; margin: 4px 0 14px; }
+      label { color: #4b5563; display: block; font-size: 12px; font-weight: 650; margin: 11px 0 6px; }
+      input, select { background: #fff; border: 1px solid #dbe2ed; border-radius: 8px; box-sizing: border-box; font: inherit; padding: 8px; width: 100%; }
+      .head, .check, .actions { align-items: center; display: flex; justify-content: space-between; }
+      .check { color: #1f2937; font-size: 12px; gap: 7px; justify-content: flex-start; }
+      .check input { accent-color: #fb7299; width: auto; }
+      .actions { gap: 7px; margin-top: 14px; }
+      button { background: #fff0f4; border: 0; border-radius: 8px; color: #d74773; cursor: pointer; font: 650 12px/1.2 inherit; padding: 8px 10px; }
+      button.secondary { background: #eef2f7; color: #536078; }
+      .marker-box { display: grid; gap: 6px; }
+      .marker-option { align-items: flex-start; background: #fff7f9; border: 1px solid #f6d9e2; border-radius: 8px; display: flex; gap: 7px; padding: 7px; }
+      .marker-option input { margin-top: 2px; width: auto; }
+      .marker-option label { margin: 0; }
+      .marker-option small { color: #8a6471; display: block; font-size: 10px; font-weight: 500; margin-top: 2px; }
+      #status { background: #fff; border-radius: 8px; color: #7b879b; font-size: 11px; margin-top: 12px; padding: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="head"><h1>B站年份过滤器</h1><div class="check"><input id="enabled" type="checkbox"><span>启用</span></div></div>
+    <p>全局设置会同步到 B 站页面内的浮动面板。</p>
+    <label for="excludedYears">精确屏蔽年份</label>
+    <input id="excludedYears" type="text" placeholder="2019, 2020">
+    <label for="minYear">隐藏某年份以前</label>
+    <input id="minYear" type="number" min="1900" max="2200" placeholder="不限制">
+    <label for="recentYears">最近 N 年</label>
+    <select id="recentYears"><option value="">不限制</option><option value="1">最近 1 年</option><option value="3">最近 3 年</option><option value="5">最近 5 年</option><option value="10">最近 10 年</option></select>
+    <label for="action">处理方式</label>
+    <select id="action"><option value="hide">隐藏</option><option value="dim">灰化</option><option value="collapse">折叠</option></select>
+    <div class="check" style="margin-top:11px"><input id="showYearBadge" type="checkbox"><span>在卡片显示年份</span></div>
+    <label>特殊内容</label>
+    <div class="marker-box">
+      <div class="marker-option"><input id="marker-entertainment" data-marker-group="entertainment" type="checkbox"><label for="marker-entertainment">娱乐类<small>综艺、电影、电视剧、纪录片、国创、直播</small></label></div>
+      <div class="marker-option"><input id="marker-anime" data-marker-group="anime" type="checkbox"><label for="marker-anime">番剧 / 漫画</label></div>
+      <div class="marker-option"><input id="marker-classroom" data-marker-group="classroom" type="checkbox"><label for="marker-classroom">课堂</label></div>
+    </div>
+    <div class="actions"><button id="save" type="button">保存设置</button><button class="secondary" id="reset" type="button">恢复默认</button></div>
+    <div id="status">正在读取设置…</div>
+    <script src="popup.js"></script>
+  </body>
+</html>

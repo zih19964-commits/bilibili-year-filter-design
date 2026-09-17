@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Bilibili Year Filter",
+  "version": "0.1.0",
+  "description": "Filter Bilibili web video cards by publication year.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.bilibili.com/*",
+    "https://search.bilibili.com/*",
+    "https://space.bilibili.com/*",
+    "https://api.bilibili.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/*",
+        "https://search.bilibili.com/*",
+        "https://space.bilibili.com/*"
+      ],
+      "js": [
+        "src/core/settings.js",
+        "src/core/filter-engine.js",
+        "src/core/date-parser.js",
+        "src/core/storage.js",
+        "src/core/metadata-cache.js",
+        "src/core/request-queue.js",
+        "src/core/metadata-resolver.js",
+        "src/core/renderer.js",
+        "src/adapters/bilibili-adapter.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "B站年份过滤器",
+    "default_popup": "popup.html"
+  }
+}

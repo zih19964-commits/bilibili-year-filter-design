@@ -1,0 +1,12 @@
+# Local browser automation logs and snapshots
+.playwright-cli/
+
+# JavaScript dependencies and generated test output
+node_modules/
+coverage/
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
