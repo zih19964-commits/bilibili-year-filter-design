@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="378" viewBox="0 0 1200 378" role="img" aria-labelledby="title desc">
+<title id="title">示例：屏蔽 2024、2025、2026；较早年份与未知年份保留</title>
+<desc id="desc">左侧是年份混杂的示例卡片，中间是精确屏蔽年份设置，右侧留下 2018、2021 与未知年份。示意不代表搜索或推荐能力，不是实际界面截图。</desc>
+<defs><style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}.mono{font-family:ui-monospace,Consolas,monospace}.signal{stroke-dasharray:4 8;animation:signal 3s linear infinite}@keyframes signal{to{stroke-dashoffset:-48}}@media(prefers-reduced-motion:reduce){.signal{animation:none}}</style></defs>
+<rect x="1" y="1" width="1198" height="376" rx="20" fill="#101e27" stroke="#304650"/>
+<text x="34" y="39" fill="#8affdf" font-size="12" letter-spacing="2" class="mono">LESS NOISE. MORE CHOICE.</text>
+<text x="1165" y="39" text-anchor="end" fill="#91a9b2" font-size="11">操作示意 · 非实际界面截图</text>
+<text x="35" y="85" fill="#eff3ed" font-size="22" font-weight="650">01 / 年份混在一起</text>
+<text x="425" y="85" fill="#eff3ed" font-size="22" font-weight="650">02 / 选择不看的年份</text>
+<text x="863" y="85" fill="#eff3ed" font-size="22" font-weight="650">03 / 留下想看的</text>
+<g transform="translate(35 111)"><rect width="302" height="46" rx="7" fill="#243b40"/><rect x="10" y="8" width="39" height="30" rx="4" fill="#729b83"/><text x="64" y="29" fill="#e9f0e9" font-size="14">2018 · 一部旧纪录片</text><rect y="56" width="302" height="46" rx="7" fill="#322e36"/><rect x="10" y="64" width="39" height="30" rx="4" fill="#946f78"/><text x="64" y="85" fill="#d6c9d0" font-size="14">2025 · 一条新视频</text><rect y="112" width="302" height="46" rx="7" fill="#243b40"/><rect x="10" y="120" width="39" height="30" rx="4" fill="#668a99"/><text x="64" y="141" fill="#e9f0e9" font-size="14">2021 · 一份认真讲解</text><rect y="168" width="302" height="46" rx="7" fill="#202f3a"/><rect x="10" y="176" width="39" height="30" rx="4" fill="#5b6976"/><text x="64" y="197" fill="#bccad3" font-size="14">未知 · 尚未确认年份</text></g>
+<path class="signal" d="M355 208H402" stroke="#89ccba" stroke-width="2" fill="none"/><path d="M394 202L401 208L394 214" stroke="#89ccba" fill="none" stroke-width="2"/>
+<rect x="425" y="111" width="350" height="214" rx="12" fill="#172d33" stroke="#49766b"/>
+<text x="443" y="141" fill="#b6cec9" font-size="13">精确屏蔽年份</text>
+<rect x="443" y="154" width="314" height="39" rx="6" fill="#0d1d25" stroke="#5cbda7"/>
+<text x="456" y="180" fill="#e9f9ed" font-size="17" class="mono">2024, 2025, 2026</text>
+<text x="444" y="222" fill="#b8c9cc" font-size="13">隐藏某年份以前</text><text x="754" y="222" text-anchor="end" fill="#e9f0e9" font-size="13">留空</text>
+<text x="444" y="249" fill="#b8c9cc" font-size="13">最近 N 年</text><text x="754" y="249" text-anchor="end" fill="#e9f0e9" font-size="13">不限制</text>
+<path d="M444 263H755" stroke="#34534f"/>
+<text x="444" y="293" fill="#b8c9cc" font-size="13">处理方式</text><text x="754" y="293" text-anchor="end" fill="#8affdf" font-size="13">隐藏</text>
+<path class="signal" d="M792 208H842" stroke="#89ccba" stroke-width="2" fill="none"/><path d="M834 202L841 208L834 214" stroke="#89ccba" fill="none" stroke-width="2"/>
+<g transform="translate(863 111)"><rect width="302" height="58" rx="8" fill="#243b40" stroke="#42645c"/><text x="15" y="35" fill="#eaf4e9" font-size="14">2018 · 一部旧纪录片</text><path d="M269 28l6 6 12-12" fill="none" stroke="#8affdf" stroke-width="2"/><rect y="70" width="302" height="58" rx="8" fill="#243b40" stroke="#42645c"/><text x="15" y="105" fill="#eaf4e9" font-size="14">2021 · 一份认真讲解</text><path d="M269 98l6 6 12-12" fill="none" stroke="#8affdf" stroke-width="2"/><rect y="140" width="302" height="74" rx="8" fill="#202f3a" stroke="#45535d"/><text x="15" y="171" fill="#e0e7e8" font-size="14">未知年份也保留</text><text x="15" y="195" fill="#a9bdc7" font-size="11">无法确认日期，不按年份误隐藏。</text></g>
+<text x="36" y="354" fill="#91a9b2" font-size="12">这里只按年份做选择；2025 年的视频不因此被认定为 AI 内容。示例未启用特殊内容过滤。</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+<title id="title">好内容，不该被时间埋没。</title>
+<desc id="desc">时间回拨概念插画。示例屏蔽 2024、2025、2026，保留较早年份的视频卡片。不是实测截图，不表示能够识别 AI 视频。</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10242b"/><stop offset=".55" stop-color="#0b151e"/><stop offset="1" stop-color="#16232b"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#4dccb5" stop-opacity=".19"/><stop offset="1" stop-color="#4dccb5" stop-opacity="0"/></radialGradient>
+<linearGradient id="art" x2="0" y2="1"><stop stop-color="#305357"/><stop offset="1" stop-color="#142b35"/></linearGradient>
+<linearGradient id="line"><stop stop-color="#88ffe0" stop-opacity="0"/><stop offset=".5" stop-color="#88ffe0"/><stop offset="1" stop-color="#88ffe0" stop-opacity="0"/></linearGradient>
+<pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#91acb8" stroke-opacity=".045"/></pattern>
+<filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.mono{font-family:ui-monospace,Consolas,monospace}
+.recent{opacity:.34;animation:mute 8s ease-in-out infinite}
+.archive{animation:float 8s ease-in-out infinite}
+.orbit{transform-origin:874px 269px;animation:rewind 28s linear infinite}
+.cursor{animation:travel 8s ease-in-out infinite}
+@keyframes mute{0%,12%,100%{opacity:.75}38%,82%{opacity:.25}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes rewind{to{transform:rotate(-360deg)}}
+@keyframes travel{0%,10%,100%{transform:translateX(0);opacity:.15}35%,80%{transform:translateX(-380px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.recent,.archive,.orbit,.cursor{animation:none}.recent{opacity:.34}.cursor{transform:translateX(-380px);opacity:1}}
+</style>
+</defs>
+<rect x="1" y="1" width="1198" height="598" rx="24" fill="url(#bg)" stroke="#304650"/>
+<rect x="2" y="2" width="1196" height="596" rx="24" fill="url(#grid)"/>
+<ellipse cx="862" cy="275" rx="320" ry="290" fill="url(#halo)"/>
+<path d="M58 49H90" stroke="#8affdf" stroke-width="3"/>
+<text x="104" y="54" fill="#9eb8be" font-size="13" letter-spacing="3" class="mono">BILIBILI YEAR FILTER</text>
+<text x="1140" y="54" text-anchor="end" fill="#9bb0b9" font-size="12" letter-spacing="2" class="mono">REWIND / REFOCUS</text>
+<rect x="58" y="111" width="169" height="30" rx="15" fill="#173b39" stroke="#326159"/>
+<circle cx="75" cy="126" r="3" fill="#8affdf"/>
+<text x="87" y="131" font-size="13" fill="#aef6dd">给注意力一个选择</text>
+<text x="54" y="220" fill="#f6f4ec" font-size="65" font-weight="750" letter-spacing="-2">好内容，</text>
+<text x="54" y="303" fill="#f6f4ec" font-size="65" font-weight="750" letter-spacing="-2">不该被时间埋没。</text>
+<text x="59" y="354" fill="#bbcbd0" font-size="19">厌倦了 AI 流水线视频？把时间拨回去。</text>
+<text x="59" y="388" fill="#bbcbd0" font-size="19">找回认真创作，也找回自己的审美和注意力。</text>
+<path d="M59 430H103" stroke="#ffcf85" stroke-width="2"/>
+<text x="117" y="435" fill="#ffcf85" font-size="14">按年份筛选，不做 AI 鉴定。</text>
+<g fill="none" stroke="#5faea3"><circle cx="874" cy="269" r="164" stroke-opacity=".20"/><circle cx="874" cy="269" r="198" stroke-opacity=".12"/><circle cx="874" cy="269" r="227" stroke-opacity=".07"/></g>
+<g class="orbit" fill="none" stroke="#8affdf"><circle cx="874" cy="269" r="198" stroke-dasharray="65 1179" stroke-opacity=".75" stroke-width="2"/><circle cx="1072" cy="269" r="4" fill="#8affdf" stroke="none"/></g>
+<g class="recent">
+<g transform="translate(933 128) rotate(9 96 73)"><rect width="184" height="146" rx="13" fill="#293341" stroke="#536274"/><rect x="13" y="14" width="158" height="72" rx="6" fill="#354254"/><path d="M35 39H149M35 51H149M35 63H149" stroke="#728096" stroke-width="4"/><text x="15" y="113" fill="#c2c9d3" font-size="15">2026</text><path d="M141 104l16 16m0-16l-16 16" stroke="#ff927f" stroke-width="2"/></g>
+<g transform="translate(969 233) rotate(10 86 60)"><rect width="170" height="140" rx="13" fill="#293341" stroke="#536274"/><rect x="13" y="14" width="144" height="71" rx="6" fill="#354254"/><path d="M34 39H136M34 51H136M34 63H136" stroke="#728096" stroke-width="4"/><text x="15" y="111" fill="#c2c9d3" font-size="15">2025</text><path d="M129 101l16 16m0-16l-16 16" stroke="#ff927f" stroke-width="2"/></g>
+</g>
+<g class="archive">
+<g transform="translate(744 188) rotate(-8 125 95)">
+<rect x="5" y="12" width="260" height="208" rx="17" fill="#030b11" opacity=".5"/>
+<rect width="260" height="208" rx="17" fill="#152c34" stroke="#74c5b5" stroke-opacity=".7"/>
+<rect x="12" y="12" width="236" height="137" rx="9" fill="url(#art)"/>
+<circle cx="185" cy="47" r="18" fill="#ffcf85"/>
+<path d="M13 125L74 65L113 101L148 71L248 144H13Z" fill="#517d77"/>
+<path d="M13 142L85 96L132 129L189 91L248 133V149H13Z" fill="#26494e"/>
+<path d="M126 142C148 123 175 143 209 130" fill="none" stroke="#8db4a0" stroke-width="2"/>
+<rect x="23" y="24" width="56" height="22" rx="5" fill="#0d222c"/>
+<text x="51" y="40" text-anchor="middle" fill="#c2f6e1" font-size="12" class="mono">2018</text>
+<circle cx="130" cy="80" r="23" fill="#10252d" fill-opacity=".8" stroke="#c6dbcc" stroke-opacity=".5"/><path d="M125 69L142 80L125 91Z" fill="#f6f4ec"/>
+<text x="17" y="177" font-size="18" font-weight="650" fill="#f6f4ec">那些值得慢慢看的作品</text>
+<text x="18" y="196" font-size="11" fill="#aac4c5">不是更新鲜，而是更想看。</text>
+</g>
+<g transform="translate(705 142) rotate(-12)"><rect width="119" height="44" rx="9" fill="#ffcf85"/><path d="M16 21l6 6 13-14" fill="none" stroke="#304343" stroke-width="2.5"/><text x="45" y="28" font-size="14" fill="#22373b" font-weight="650">留住好内容</text></g>
+<g transform="translate(852 400) rotate(-4)"><rect width="201" height="31" rx="15" fill="#123b37" stroke="#467a6b"/><circle cx="15" cy="15" r="3" fill="#8affdf"/><text x="27" y="21" font-size="12" fill="#b9e6d6">2013 · 2018 · 2021 · 更早</text></g>
+</g>
+<path d="M60 496H1140" stroke="#334550"/>
+<text x="59" y="531" fill="#a8bac0" font-size="11" class="mono" letter-spacing="1">YOUR FEED. YOUR YEARS.</text>
+<path d="M322 527H1138" stroke="#42585e"/>
+<path d="M322 527H746" stroke="#8affdf" stroke-opacity=".8" stroke-width="2"/>
+<g fill="#8affdf"><circle cx="356" cy="527" r="4"/><circle cx="492" cy="527" r="4"/><circle cx="628" cy="527" r="4"/></g>
+<g fill="#6a6870"><circle cx="872" cy="527" r="4"/><circle cx="1008" cy="527" r="4"/><circle cx="1136" cy="527" r="4"/></g>
+<g class="mono" font-size="12" text-anchor="middle"><g fill="#b8d8d0"><text x="356" y="554">2013</text><text x="492" y="554">2018</text><text x="628" y="554">2021</text></g><g fill="#b89c9a"><text x="872" y="554">2024</text><text x="1008" y="554">2025</text><text x="1136" y="554">2026</text></g></g>
+<g class="cursor"><circle cx="1008" cy="527" r="11" fill="#8affdf" opacity=".65" filter="url(#glow)"/><circle cx="1008" cy="527" r="6" fill="#e3fff3"/></g>
+<text x="59" y="575" font-size="10" fill="#839ba7">概念示意 · 非实测截图</text>
+<style>.recent,.archive,.orbit,.cursor{animation:none!important}.recent{opacity:.34}.cursor{transform:translateX(-380px);opacity:1}</style></svg>

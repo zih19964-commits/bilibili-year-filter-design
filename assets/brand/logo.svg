@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-labelledby="title desc">
+<title id="title">Bilibili Year Filter · 时间回拨</title>
+<desc id="desc">深色圆角方形内，青色回拨时钟包围白色与珊瑚色的双倒带箭头。</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#172734"/><stop offset="1" stop-color="#09141c"/></linearGradient><linearGradient id="arc" x2="1" y2="1"><stop stop-color="#8affdf"/><stop offset="1" stop-color="#36bed0"/></linearGradient></defs>
+<rect x="4" y="4" width="184" height="184" rx="48" fill="url(#bg)" stroke="#34505b" stroke-width="2"/>
+<circle cx="96" cy="96" r="70" fill="none" stroke="#31424a" stroke-dasharray="2 10"/>
+<path d="M51 63A55 55 0 1 1 42 110" fill="none" stroke="url(#arc)" stroke-width="10" stroke-linecap="round"/>
+<path d="M51 42V65H74" fill="none" stroke="#8affdf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M91 76L67 96L91 116Z" fill="#f6f4ec"/>
+<path d="M119 76L95 96L119 116Z" fill="#ff927f"/>
+<circle cx="149" cy="43" r="6" fill="#ffcf85"/>
+</svg>
