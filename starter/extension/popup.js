@@ -25,7 +25,7 @@
         ? [...new Set(source.excludedYears.map(Number).filter(Number.isInteger))].sort((a, b) => b - a)
         : [],
       blockedMarkerGroups: Array.isArray(source.blockedMarkerGroups)
-        ? [...new Set(source.blockedMarkerGroups)].filter((group) => ["entertainment", "anime", "classroom"].includes(group))
+        ? [...new Set(source.blockedMarkerGroups)].filter((group) => ["entertainment", "anime", "classroom", "ad"].includes(group))
         : [],
       minYear:
         source.minYear == null || (typeof source.minYear === "string" && source.minYear.trim() === "")

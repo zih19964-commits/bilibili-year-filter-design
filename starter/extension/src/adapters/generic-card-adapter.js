@@ -4,6 +4,10 @@
   const BYF = (global.BYF = global.BYF || {});
   const BVID_PATTERN = /BV[0-9A-Za-z]{10}/;
 
+  function isAdvertisementHref(href) {
+    return typeof href === "string" && /^(?:https?:)?\/\/cm\.bilibili\.com(?:\/|$)/i.test(href.trim());
+  }
+
   function extractBvidFromHref(href) {
     return typeof href === "string" ? href.match(BVID_PATTERN)?.[0] || null : null;
   }
@@ -19,10 +23,10 @@
       }
 
       const candidates = [];
-      if (root.matches?.("a[href*='/video/BV']")) {
+      if (root.matches?.("a[href*='/video/BV'], a[href*='cm.bilibili.com']")) {
         candidates.push(root);
       }
-      candidates.push(...root.querySelectorAll("a[href*='/video/BV']"));
+      candidates.push(...root.querySelectorAll("a[href*='/video/BV'], a[href*='cm.bilibili.com']"));
 
       const cards = new Set();
       for (const anchor of candidates) {
@@ -45,6 +49,10 @@
         bvid: element.getAttribute?.("data-bvid") || extractBvidFromHref(href),
         surface: "generic",
         domDateText: null,
+        specialMarker:
+          isAdvertisementHref(href) && element.textContent?.trim() === "广告"
+            ? { label: "广告", group: "ad" }
+            : null,
       };
     }
   }

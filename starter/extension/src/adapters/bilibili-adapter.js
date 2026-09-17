@@ -7,6 +7,7 @@
     entertainment: Object.freeze(["综艺", "电影", "电视剧", "纪录片", "国创", "直播"]),
     anime: Object.freeze(["番剧", "漫画"]),
     classroom: Object.freeze(["课堂"]),
+    ad: Object.freeze(["广告"]),
   });
   const MARKER_GROUP_BY_LABEL = Object.freeze(
     Object.fromEntries(
@@ -22,13 +23,28 @@
     return MARKER_GROUP_BY_LABEL[normalized] || null;
   }
 
+  function isAdvertisementHref(href) {
+    return typeof href === "string" && /^(?:https?:)?\/\/cm\.bilibili\.com(?:\/|$)/i.test(href.trim());
+  }
+
   function readSpecialMarker(card) {
     if (!card?.querySelector) return null;
 
     const markerNodes = [
+      card.matches?.(
+        ".bili-video-card__info--ad, .bili-video-card__info--ad-text, [data-ad-label], [data-label='广告'], [aria-label='广告']",
+      )
+        ? card
+        : null,
       card.querySelector(":scope .floor-card-inner .cover-container a .badge span"),
       card.querySelector(":scope .floor-single-card .badge span"),
       card.querySelector(":scope .bili-video-card__info--living__text"),
+      card.querySelector(":scope .bili-video-card__info--ad"),
+      card.querySelector(":scope .bili-video-card__info--ad-text"),
+      card.querySelector(":scope [data-ad-label]"),
+      card.querySelector(":scope [data-label='广告']"),
+      card.querySelector(":scope [aria-label='广告']"),
+      ...card.querySelectorAll(":scope .bili-video-card__stats--text"),
     ].filter(Boolean);
 
     for (const node of markerNodes) {
@@ -36,6 +52,17 @@
       const group = markerGroupForLabel(label);
       if (group) return { label, group };
     }
+
+    const adLink = [
+      ...(card.matches?.("a[href]") ? [card] : []),
+      ...card.querySelectorAll("a[href]"),
+    ].find(
+      (anchor) =>
+        isAdvertisementHref(anchor.getAttribute("href")) &&
+        anchor.textContent?.trim() === "广告",
+    );
+    if (adLink) return { label: "广告", group: "ad" };
+
     return null;
   }
 
@@ -206,7 +233,7 @@
       parent.querySelectorAll(".floor-single-card").forEach((node) => candidates.add(node));
 
       parent
-        .querySelectorAll("a[href*='/video/BV'], a[href*='bvid=BV'], [data-bvid]")
+        .querySelectorAll("a[href*='/video/BV'], a[href*='bvid=BV'], a[href*='cm.bilibili.com'], [data-bvid]")
         .forEach((node) => anchors.push(node));
 
       for (const candidate of candidates) {
@@ -304,6 +331,8 @@
     adapters: knownAdapters,
     fallbackAdapter,
     extractBvidFromHref,
+    isAdvertisementHref,
+    readSpecialMarker,
     SPECIAL_MARKER_GROUPS,
     markerGroupForLabel,
     selectAdapter(url) {

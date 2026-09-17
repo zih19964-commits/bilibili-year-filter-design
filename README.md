@@ -123,3 +123,14 @@ bilibili-year-filter-design/
 - 页面 SPA 导航后无需刷新；
 - B 站某一种卡片结构变化时，不影响 Filter Engine / Cache；
 - API 暂时失败时页面本身仍可正常使用。
+
+## License
+
+本仓库整体使用 [MIT License](LICENSE) 授权。
+
+该授权仅适用于本仓库中由项目作者或贡献者拥有相应权利的原创代码和文档；Bilibili 的商标、网站内容、接口数据及其他第三方材料不因本声明获得授权。
+
+## 使用与发布
+
+- [使用说明](使用说明.md)
+- [release 发布流程](release/README.md)

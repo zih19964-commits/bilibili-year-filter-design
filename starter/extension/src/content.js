@@ -31,7 +31,7 @@
       : defaults.action;
     const blockedMarkerGroups = Array.isArray(source.blockedMarkerGroups)
       ? [...new Set(source.blockedMarkerGroups)].filter((group) =>
-          ["entertainment", "anime", "classroom"].includes(group),
+          ["entertainment", "anime", "classroom", "ad"].includes(group),
         )
       : [...(defaults.blockedMarkerGroups || [])];
     const minYear =
@@ -330,6 +330,7 @@
               <div class="byf-marker-option"><input id="byf-marker-entertainment" data-byf-marker-group="entertainment" type="checkbox"><label for="byf-marker-entertainment">娱乐类<small>综艺、电影、电视剧、纪录片、国创、直播</small></label></div>
               <div class="byf-marker-option"><input id="byf-marker-anime" data-byf-marker-group="anime" type="checkbox"><label for="byf-marker-anime">番剧 / 漫画</label></div>
               <div class="byf-marker-option"><input id="byf-marker-classroom" data-byf-marker-group="classroom" type="checkbox"><label for="byf-marker-classroom">课堂</label></div>
+              <div class="byf-marker-option"><input id="byf-marker-ad" data-byf-marker-group="ad" type="checkbox"><label for="byf-marker-ad">广告</label></div>
             </div>
           </div>
           <div id="byf-status" class="byf-status">正在准备过滤器…</div>

@@ -14,6 +14,8 @@ for (const file of [
 ]) {
   require(path.join(core, file));
 }
+require(path.resolve(__dirname, "../starter/extension/src/adapters/bilibili-adapter.js"));
+require(path.resolve(__dirname, "../starter/extension/src/adapters/generic-card-adapter.js"));
 
 const {
   BYF,
@@ -33,9 +35,40 @@ test("FilterEngine preserves rule priority and fail-open semantics", () => {
   assert.deepEqual(BYF.FilterEngine.evaluate(2025, settings, 2026), { action: "show", reason: "allowed" });
   assert.equal(BYF.normalizeSettings({ unknownPolicy: "hide" }).unknownPolicy, "show");
   assert.deepEqual(
-    BYF.normalizeSettings({ blockedMarkerGroups: ["classroom", "classroom", "invalid"] }).blockedMarkerGroups,
-    ["classroom"],
+    BYF.normalizeSettings({ blockedMarkerGroups: ["classroom", "ad", "classroom", "invalid"] }).blockedMarkerGroups,
+    ["classroom", "ad"],
   );
+});
+
+test("advertisement cards are a special marker and do not use title keywords", () => {
+  assert.equal(BYF.adapters.markerGroupForLabel("广告"), "ad");
+  assert.equal(BYF.adapters.markerGroupForLabel("标题含广告"), null);
+  assert.equal(BYF.adapters.isAdvertisementHref("//cm.bilibili.com/cm/api/fees/pc/sync"), true);
+  assert.equal(BYF.adapters.isAdvertisementHref("https://www.bilibili.com/video/BV1xx411c7mD"), false);
+
+  const adMarker = { textContent: "广告" };
+  const bilibiliAdCard = {
+    matches: () => false,
+    querySelector: () => null,
+    querySelectorAll: (selector) =>
+      selector.includes("bili-video-card__stats--text") ? [adMarker] : [],
+  };
+  assert.deepEqual(BYF.adapters.readSpecialMarker(bilibiliAdCard), { label: "广告", group: "ad" });
+
+  const generic = new BYF.GenericCardAdapter();
+  const adAnchor = {
+    matches: (selector) => selector === "a[href]" || selector.includes("cm.bilibili.com"),
+    getAttribute: () => "//cm.bilibili.com/cm/api/fees/pc/sync",
+    querySelector: () => null,
+    textContent: "广告",
+    closest: () => null,
+  };
+  const root = {
+    querySelectorAll: () => [adAnchor],
+    matches: () => false,
+  };
+  const [card] = generic.discover(root);
+  assert.deepEqual(card.specialMarker, { label: "广告", group: "ad" });
 });
 
 test("date parser handles absolute dates and cross-year relative dates", () => {

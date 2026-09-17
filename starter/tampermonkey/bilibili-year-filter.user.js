@@ -38,7 +38,7 @@
         ? [...new Set(source.excludedYears.map(Number).filter(Number.isInteger))].sort((a, b) => b - a)
         : [],
       blockedMarkerGroups: Array.isArray(source.blockedMarkerGroups)
-        ? [...new Set(source.blockedMarkerGroups)].filter((group) => ["entertainment", "anime", "classroom"].includes(group))
+        ? [...new Set(source.blockedMarkerGroups)].filter((group) => ["entertainment", "anime", "classroom", "ad"].includes(group))
         : [],
       minYear:
         source.minYear == null || (typeof source.minYear === "string" && source.minYear.trim() === "")
@@ -75,19 +75,46 @@
     番剧: "anime",
     漫画: "anime",
     课堂: "classroom",
+    广告: "ad",
   });
+
+  function isAdvertisementHref(href) {
+    return typeof href === "string" && /^(?:https?:)?\/\/cm\.bilibili\.com(?:\/|$)/i.test(href.trim());
+  }
 
   function readSpecialMarker(card) {
     const nodes = [
+      card.matches?.(
+        ".bili-video-card__info--ad, .bili-video-card__info--ad-text, [data-ad-label], [data-label='广告'], [aria-label='广告']",
+      )
+        ? card
+        : null,
       card.querySelector?.(":scope .floor-card-inner .cover-container a .badge span"),
       card.querySelector?.(":scope .floor-single-card .badge span"),
       card.querySelector?.(":scope .bili-video-card__info--living__text"),
+      card.querySelector?.(":scope .bili-video-card__info--ad"),
+      card.querySelector?.(":scope .bili-video-card__info--ad-text"),
+      card.querySelector?.(":scope [data-ad-label]"),
+      card.querySelector?.(":scope [data-label='广告']"),
+      card.querySelector?.(":scope [aria-label='广告']"),
+      ...(card.querySelectorAll?.(":scope .bili-video-card__stats--text") || []),
     ].filter(Boolean);
     for (const node of nodes) {
       const label = node.textContent?.trim();
       const group = MARKER_GROUP_BY_LABEL[label];
       if (group) return { label, group };
     }
+
+    const adLink = [
+      ...(card.matches?.("a[href]") ? [card] : []),
+      ...(card.querySelectorAll?.("a[href]") || []),
+    ].find(
+      (anchor) =>
+        isAdvertisementHref(anchor.getAttribute("href")) &&
+        anchor.textContent?.trim() === "广告",
+    );
+    if (adLink) return { label: "广告", group: "ad" };
+
     return null;
   }
 
@@ -271,8 +298,8 @@
   function discover(root) {
     if (!root?.querySelectorAll) return [];
     const anchors = [];
-    if (root.matches?.("a[href*='/video/BV'], [data-bvid]")) anchors.push(root);
-    anchors.push(...root.querySelectorAll("a[href*='/video/BV'], [data-bvid]"));
+    if (root.matches?.("a[href*='/video/BV'], a[href*='cm.bilibili.com'], [data-bvid]")) anchors.push(root);
+    anchors.push(...root.querySelectorAll("a[href*='/video/BV'], a[href*='cm.bilibili.com'], [data-bvid]"));
     if (root.matches?.(".floor-single-card")) anchors.push(root);
     anchors.push(...root.querySelectorAll(".floor-single-card"));
     const cards = new Set();

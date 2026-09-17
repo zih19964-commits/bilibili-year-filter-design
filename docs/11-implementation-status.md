@@ -8,7 +8,7 @@
 - `starter/extension/`：Manifest V3 content runtime、popup、页面内设置面板；
 - `starter/extension/src/core/`：规则、日期解析、storage、缓存、请求队列、元数据解析和 renderer；
 - 页面批处理：同一批卡片统一走 DOM/缓存/API 解析，并在同一帧集中渲染；
-- 特殊标记过滤：娱乐类、番剧/漫画、课堂三组开关；参考 B 站 `floor-single-card` 的结构化 badge，不匹配标题关键词；
+- 特殊标记过滤：娱乐类、番剧/漫画、课堂、广告四组开关；参考 B 站卡片的结构化 badge 和广告链接 `cm.bilibili.com`，不匹配标题关键词；
 - `starter/extension/src/adapters/`：按 B 站页面 surface 选择 adapter，并集中管理 BVID/卡片/日期选择器；
 - `test/`：核心规则、跨年日期、缓存、队列去重、API fail-open 的自动化检查。
 
@@ -27,7 +27,7 @@
 
 ```text
 npm run check  -> syntax ok: 13 files
-npm test       -> 6 passed, 0 failed
+npm test        -> 7 passed, 0 failed
 manifest check -> 11 referenced files exist
 ```
 
@@ -41,7 +41,7 @@ Chrome 真实 B 站首页验收（运行时注入已完成的 Userscript / Exten
 - 同一批 4 张夹具卡片只触发 1 次 DOM 变更回调，统一得到 `hide / hide / show / show`；
 - 隐藏的是参与网格布局的外层卡片，剩余卡片自动补位，不再保留空白网格项；
 - 20 个不同 BVID 的模拟批处理：约 `6.85s -> 1.83s`，约 `3.75x`；真实速度仍受网络和 B 站限流影响；
-- 三组特殊标记验收：勾选娱乐类 + 课堂后，`综艺=hide`、`番剧=show`、`课堂=hide`；标题含“课堂”但没有结构化标记的普通视频保持 `show`；
+- 特殊标记验收：勾选娱乐类 + 课堂后，`综艺=hide`、`番剧=show`、`课堂=hide`；标题含“课堂”但没有结构化标记的普通视频保持 `show`；广告组已覆盖结构化 `广告` 标记、`cm.bilibili.com` 广告链接和无 BVID 卡片发现路径；
 - 已保存截图：`output/playwright/bilibili-year-filter-acceptance.png`。
 
 ## 当前边界

@@ -4,7 +4,7 @@
   const SETTINGS_SCHEMA_VERSION = 1;
   const SETTINGS_STORAGE_KEY = "byf:settings:v1";
   const VALID_ACTIONS = new Set(["hide", "dim", "collapse"]);
-  const VALID_BLOCKED_MARKER_GROUPS = new Set(["entertainment", "anime", "classroom"]);
+  const VALID_BLOCKED_MARKER_GROUPS = new Set(["entertainment", "anime", "classroom", "ad"]);
   const DEFAULT_SETTINGS = Object.freeze({
     schemaVersion: SETTINGS_SCHEMA_VERSION,
     enabled: true,
